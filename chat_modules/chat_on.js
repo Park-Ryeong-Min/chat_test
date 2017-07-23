@@ -13,10 +13,12 @@ io.on('connection', function (socket) {
     });
     socket.on('join_room', function (data) {
        socket.join(data.room_id);
+       console.log(data.room_id);
        var msg = data.room_id + " has joined";
        socket.emit('notice_join_room', {data:msg});
     });
     socket.on('send_message', function (data) {
+        console.log(data.message);
         socket.in(data.room_id).emit('send_message', data.message);
     });
 });
