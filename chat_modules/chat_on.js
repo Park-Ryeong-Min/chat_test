@@ -18,8 +18,8 @@ io.on('connection', function (socket) {
        socket.emit('notice_join_room', {data:msg});
     });
     socket.on('send_message', function (data) {
-        console.log(data.message);
-        socket.in(data.room_id).emit('send_message', data.message);
+        console.log(data.message + "room : " + data.room_id);
+        io.sockets.in(data.room_id).emit("send_message",data.message);
     });
 });
 
