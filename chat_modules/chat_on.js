@@ -9,7 +9,8 @@ io.on('connection', function (socket) {
     console.log('a user connected');
     socket.on('disconnect', function () {
         console.log('disconnect');
-    })
+    });
+    socket.emit('join',{data:"Welcome"});
 });
 
 module.exports = io;
