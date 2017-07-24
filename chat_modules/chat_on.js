@@ -19,7 +19,7 @@ io.on('connection', function (socket) {
     });
     socket.on('send_message', function (data) {
         console.log(data.message + "room : " + data.room_id);
-        io.sockets.in(data.room_id).emit("send_message",data.message);
+        io.sockets.in(data.room_id).emit("send_message",{room_id : data.room_id, message : data.message});
     });
 });
 
