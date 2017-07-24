@@ -18,7 +18,7 @@ io.on('connection', function (socket) {
        socket.emit('notice_join_room', {data:msg});
     });
     socket.on('send_message', function (data) {
-        console.log(data.message + "room : " + data.room_id);
+        console.log(io.sockets.adapter.rooms);
         io.sockets.in(data.room_id).emit("send_message",{room_id : data.room_id, message : data.message});
     });
 });
